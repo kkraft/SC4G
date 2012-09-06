@@ -1,25 +1,18 @@
 require 'spec_helper'
-#require 'database_cleaner'
-#DatabaseCleaner.strategy = :transaction
 include WebformHelper
 
 describe "Webform Submission Helper" do
-  before(:all) do
+
+  before(:each) do
     @webformSubmissionHelper = WebformSubmissionHelper.new
-    30.times { FactoryGirl.create(:ws_first_name)}
-    30.times { FactoryGirl.create(:ws_last_name)}
-    30.times { FactoryGirl.create(:ws_email)}
   end
 
-  #before(:each) do
-  #  DatabaseCleaner.start
-  #end
-  #
-  #after(:each) do
-  #  DatabaseCleaner.clean
-  #end
-
   describe "create_volunteer_from_submission" do
+    before(:each) do
+      FactoryGirl.create(:ws_first_name, sid: 1, data: "FirstName_1")
+      FactoryGirl.create(:ws_last_name, sid: 1, data: "LastName_1")
+      FactoryGirl.create(:ws_email, sid: 1, data: "Person_1@example.com")
+    end
 
     it "create volunteer with first name, last name and email" do
       @webformSubmissionHelper.create_volunteer_from_submission(1)
@@ -36,22 +29,28 @@ describe "Webform Submission Helper" do
   end
 
   describe "refresh_volunteers" do
-
+    before(:all) do
+      30.times { FactoryGirl.create(:ws_first_name)}
+      30.times { FactoryGirl.create(:ws_last_name)}
+      30.times { FactoryGirl.create(:ws_email)}
+    end
 
     it "should update volunteer table with all volunteers from webform_submitted_data table" do
+
+      WebformSubmittedData.count.should == 90
       @webformSubmissionHelper.refresh_volunteers
 
       Volunteer.count.should == 30
 
-      volunteer1 = Volunteer.where(:id => 1).first
-      volunteer25 = Volunteer.where(:id => 25).first
+      volunteer_first = Volunteer.first
+      volunteer_last = Volunteer.last
 
-      volunteer1.first_name.should == "FirstName_1"
-      volunteer25.first_name.should == "FirstName_25"
-      volunteer1.last_name.should == "LastName_1"
-      volunteer25.last_name.should == "LastName_25"
-      volunteer1.email.should == "Person_1@example.com"
-      volunteer25.email.should == "Person_25@example.com"
+      volunteer_first.first_name.should == "FirstName_" + volunteer_first.id.to_s
+      volunteer_last.first_name.should == "FirstName_" + volunteer_last.id.to_s
+      volunteer_first.last_name.should == "LastName_" + volunteer_first.id.to_s
+      volunteer_last.last_name.should == "LastName_" + volunteer_last.id.to_s
+      volunteer_first.email.should == "Person_" + volunteer_first.id.to_s + "@example.com"
+      volunteer_last.email.should == "Person_" + volunteer_last.id.to_s + "@example.com"
 
     end
 
@@ -70,15 +69,11 @@ describe "Webform Submission Helper" do
 
       Volunteer.count.should == 32
 
-      volunteer1 = Volunteer.where(:id => 1).first
       volunteer51 = Volunteer.where(:id => 51).first
       volunteer112 = Volunteer.where(:id => 112).first
 
-      volunteer1.first_name.should == "FirstName_1"
       volunteer51.first_name.should == "FirstName_51"
-      volunteer1.last_name.should == "LastName_1"
       volunteer51.last_name.should == "LastName_51"
-      volunteer1.email.should == "Person_1@example.com"
       volunteer51.email.should == "Person_51@example.com"
       volunteer112.first_name.should == "FirstName_112"
       volunteer112.last_name.should == "LastName_112"
@@ -87,9 +82,5 @@ describe "Webform Submission Helper" do
     end
 
   end
-
-  #after(:all) do
-  #  DatabaseCleaner.clean
-  #end
 
 end
