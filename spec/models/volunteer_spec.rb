@@ -13,13 +13,11 @@ describe "Volunteer" do
       Volunteer.create(:first_name => "FirstName_1", :last_name => "LastName_1", :email => "Person_1@example.com", :id => 1)
     end
 
-
     it "should return the amount of time the volunteer is willing to commit" do
       @volunteer = Volunteer.find(1)
 
       @volunteer.first_name.should == "FirstName_1"
       @volunteer.time_to_commit.data.should == "A_Few_Hours_per_Week"
-
     end
   end
 

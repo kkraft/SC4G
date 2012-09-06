@@ -1,0 +1,237 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd" >
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <!-- Le styles -->
+  <link href="./bootstrap/css/bootstrap.css" rel="stylesheet">
+  <style type="text/css">
+      body {
+          padding-top: 60px;
+          padding-bottom: 40px;
+      }
+      .sidebar-nav {
+          padding: 9px 0;
+      }
+  </style>
+  <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.min.js"></script>
+  <script type="text/javascript" src="./aefxx-jQote2-474253a/jquery.jqote2.js"></script>
+</head>
+<body>
+<!-- Top Navigation Bar -->
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="#">Social Coding 4 Good</a>
+      <div class="nav-collapse collapse">
+        <p class="navbar-text pull-right">
+          Logged in as <a href="#" class="navbar-link">Super User</a>
+        </p>
+        <ul class="nav">
+          <li class="active"><a href="#">Home</a></li>
+        </ul>
+      </div>
+    </div><!-- /fluid-container -->
+  </div> <!-- /inner nav bar -->
+</div> <!-- /top nav bar -->
+
+<div class="container-fluid">
+  <div class="span4">
+    <div class="row">
+      <label for="first name"><b>First Name</b></label>
+      <input type="text" id="first name">
+    </div>
+    <div class="row">
+      <label for="last name"><b>Last Name</b></label>
+      <input type="text" id="last name">
+    </div>
+    <div class="row">
+      <label for="company"><b>Company/Event</b></label>
+      <input type="text" id="company">
+    </div>
+
+    <div class="row" >
+      <label for="skills" class="collapsed"><b>Skills</b></label>
+      <input type="checkbox" id="softwareDevelopment" class="custom"/> Software Development <br/>
+      <input type="checkbox" id="experienceDesign" class="custom"/> Experience Design <br/>
+      <input type="checkbox" id="projectManagement"class="custom" /> Project Management <br/>
+    </div>
+
+    </br>
+    <div class="row">
+      <label for="time to commit"><b>Time To Commit</b></label>
+      <input type="radio"> A Few Hours per Week <br>
+      <input type="radio"> A Few Hours per Month <br>
+      <input type="radio"> 0-8 Hours Total <br>
+      <input type="radio"> 20-40 Hours Total <br>
+      <input type="radio"> More Than 40 Hours Total <br>
+      <input type="radio"> Unknown <br>
+    </div>
+  </div>
+
+  <div class="span4">
+    <div class="row">
+      <label for="organizations interest"><b> HFOSS Organizations Interest </b></label>
+      <input type="checkbox" id="benetech" /> Benetech <br/>
+      <input type="checkbox" id="codeForAmerica" />  Code For America <br/>
+      <input type="checkbox" id="frontlineSms" />  FrontlineSMS <br/>
+      <input type="checkbox" id="theGuardianProject" />  The Guardian Project <br/>
+      <input type="checkbox" id="mozillaWebmaker" />  Mozilla Webmaker <br/>
+      <input type="checkbox" id="amara" />  Amara (Universal Subtitles) <br/>
+      <input type="checkbox" id="wikimediaFoundation" />  Wikimedia Foundation <br/>
+    </div>
+    </br>
+    </br>
+    <div class="row">
+      <label for="causes interest"><b> Causes Interest </b></label>
+      <input type="checkbox" id="civicEngagement" /> Civic Engagement <br/>
+      <input type="checkbox" id="climateChangeMitigation" />  Climate Change Mitigation <br/>
+      <input type="checkbox" id="disasterRelief" />  Disaster Relief <br/>
+      <input type="checkbox" id="educationAndLiteracy" />  Education and Literacy <br/>
+      <input type="checkbox" id="empowermentOfWomen" />  Empowerment of Women <br/>
+      <input type="checkbox" id="environmentalAndSpeciesConservation" />  Environmental and Species Conservation <br/>
+      <input type="checkbox" id="healthcare" />  Healthcare <br/>
+      <input type="checkbox" id="homelessness" />  Homelessness <br/>
+      <input type="checkbox" id="humanRights" />  Human Rights <br/>
+      <input type="checkbox" id="povertyAlleviation" />  Poverty Alleviation <br/>
+      <input type="checkbox" id="selfsufficiencyForPeopleWithDisabilities" />  Self Sufficiency for People with Disabilities <br/>
+    </div>
+  </div>
+
+  <div class="span4">
+    <div class="row">
+      <label for="programming languages interest"><b> Programming Languages Interest </b></label>
+      <input type="checkbox" id="actionScript" /> ActionScript <br/>
+      <input type="checkbox" id="c" /> C <br/>
+      <input type="checkbox" id="c++" /> C++ <br/>
+      <input type="checkbox" id="c#" /> C# <br/>
+      <input type="checkbox" id="html/css" /> HTML/CSS<br/>
+      <input type="checkbox" id="java" /> Java <br/>
+      <input type="checkbox" id="javaOnAndroid" /> Java On Android <br/>
+      <input type="checkbox" id="javascript" /> JavaScript <br/>
+      <input type="checkbox" id="objectiveC" /> Objective C <br/>
+      <input type="checkbox" id="objectiveCOnIphone" /> Objective C on iPhone <br/>
+      <input type="checkbox" id="perl" /> Perl <br/>
+      <input type="checkbox" id="php" /> PHP <br/>
+      <input type="checkbox" id="python" /> Python <br/>
+      <input type="checkbox" id="ruby" /> Ruby <br/>
+      <input type="checkbox" id="scala" /> Scala <br/>
+    </div>
+    </br>
+    <div class="row">
+      <label for="openSourceProjects"><b>Open Source Projects</b></label>
+      <input type="radio"> yes <br>
+      <input type="radio"> no <br>
+    </div>
+  </div>
+  <div>
+    <input type="submit" value="Submit">
+  </div>
+</div><!--/fluid-container-->
+
+<hr>
+
+<div class="span9" id="persons"></div>
+
+<footer>
+  <p>&copy; Company 2012</p>
+</footer>
+
+<script type="text/x-jqote-template" id="jqote2_simple">
+  <![CDATA[
+  <div class="row" id="<*= this.id *>">
+
+    <h2><*= this.name*></h2>
+    <p><*= this.summary *></p>
+    <div class="hidden">
+      <technologies>
+      </technologies>
+    </div>
+  </div>
+  ]]>
+</script>
+
+
+<script type="text/javascript">
+
+    String.prototype.format = function() {
+        var formatted = this;
+        for (var i = 0; i < arguments.length; i++) {
+            var regexp = new RegExp('\\{'+i+'\\}', 'gi');
+            formatted = formatted.replace(regexp, arguments[i]);
+        }
+        return formatted;
+    };
+
+    var persons = [];
+    var persons_left = [];
+
+    function initData() {
+        persons.push(
+                {id:1, name: "Nick", summary: "He doesn't usually fit any project", technologies:{"c":"0", "c#":"0", "js":"0"}}
+        );
+        persons.push(
+                {id:3, name: "John", summary: "He is really experienced in whatever", technologies:{"c":"3", "c#":"5", "js":"2"}}
+        );
+        persons.push(
+                {id:4, name:"Kori", summary:"She is just a nice girl", technologies:{"php":"7", "asm":"2"}}
+        );
+
+        return persons;
+    }
+
+    function onSearch(){
+        onDataUpdated(persons);
+        <!-- this is a cheat just for client side usage of the template engine -->
+
+    }
+
+    function onDataUpdated(data){
+        $("#persons").empty();
+
+        <!-- somehow this doesn't work with .each method. probably it's because of scope for $(this)-->
+        while(data.length != 0)
+        {
+            var person = data.pop();
+            $('#persons').append($('#jqote2_simple').jqote(person, '*'));
+            var node = $('#persons :last-child :last');
+            $.each(person.technologies,
+                    function(index, technology){
+                        var techNode = '<tech name="{0}" experience="{1}" />'.format(index, technology);
+                        node.append(techNode);
+                    }
+            );
+
+            persons_left.push(person);
+        }
+
+        persons = persons_left;
+        persons_left = [];
+    }
+
+    $(document).ready(function(){
+        initData();
+
+        $('#search').bind('click', function(){
+            console.log('click');
+            <!-- send the request to the web server here -->
+            persons = persons.filter(function(item){
+                var techName = $('#technology').val();
+                return item.technologies[techName] != null;
+            });
+            onSearch();
+        });
+
+        onDataUpdated(persons);
+    });
+</script>
+</body>
+</html>
+
+
