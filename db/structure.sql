@@ -575,7 +575,7 @@ CREATE TABLE `file_managed` (
   KEY `uid` (`uid`),
   KEY `status` (`status`),
   KEY `timestamp` (`timestamp`)
-) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=utf8 COMMENT='Stores information for uploaded files.';
+) ENGINE=InnoDB AUTO_INCREMENT=125 DEFAULT CHARSET=utf8 COMMENT='Stores information for uploaded files.';
 
 CREATE TABLE `file_usage` (
   `fid` int(10) unsigned NOT NULL COMMENT 'File ID.',
@@ -620,7 +620,7 @@ CREATE TABLE `flood` (
   PRIMARY KEY  (`fid`),
   KEY `allow` (`event`,`identifier`,`timestamp`),
   KEY `purge` (`expiration`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='Flood controls the threshold of events, such as the...';
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8 COMMENT='Flood controls the threshold of events, such as the...';
 
 CREATE TABLE `history` (
   `uid` int(11) NOT NULL default '0' COMMENT 'The users.uid that read the node nid.',
@@ -847,7 +847,7 @@ CREATE TABLE `queue` (
   PRIMARY KEY  (`item_id`),
   KEY `name_created` (`name`,`created`),
   KEY `expire` (`expire`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COMMENT='Stores items in queues.';
+) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8 COMMENT='Stores items in queues.';
 
 CREATE TABLE `rdf_mapping` (
   `type` varchar(128) NOT NULL COMMENT 'The name of the entity type a mapping applies to (node, user, comment, etc.).',
@@ -888,6 +888,11 @@ CREATE TABLE `role_permission` (
   PRIMARY KEY  (`rid`,`permission`),
   KEY `permission` (`permission`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores the permissions assigned to user roles.';
+
+CREATE TABLE `schema_migrations` (
+  `version` varchar(255) NOT NULL,
+  UNIQUE KEY `unique_schema_migrations` (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `search_dataset` (
   `sid` int(10) unsigned NOT NULL default '0' COMMENT 'Search item ID, e.g. node ID for nodes.',
@@ -1132,6 +1137,17 @@ CREATE TABLE `views_view` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores the general data for a view.';
 
+CREATE TABLE `volunteers` (
+  `id` int(11) NOT NULL auto_increment,
+  `first_name` varchar(255) default NULL,
+  `last_name` varchar(255) default NULL,
+  `email` varchar(255) default NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `sid` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 CREATE TABLE `watchdog` (
   `wid` int(11) NOT NULL auto_increment COMMENT 'Primary Key: Unique watchdog event ID.',
   `uid` int(11) NOT NULL default '0' COMMENT 'The users.uid of the user who triggered the event.',
@@ -1147,7 +1163,7 @@ CREATE TABLE `watchdog` (
   PRIMARY KEY  (`wid`),
   KEY `type` (`type`),
   KEY `uid` (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=8501 DEFAULT CHARSET=utf8 COMMENT='Table that contains logs of all system events.';
+) ENGINE=InnoDB AUTO_INCREMENT=8807 DEFAULT CHARSET=utf8 COMMENT='Table that contains logs of all system events.';
 
 CREATE TABLE `webform` (
   `nid` int(10) unsigned NOT NULL COMMENT 'The node identifier of a webform.',
@@ -1221,7 +1237,7 @@ CREATE TABLE `webform_submissions` (
   UNIQUE KEY `sid_nid` (`sid`,`nid`),
   KEY `nid_uid_sid` (`nid`,`uid`,`sid`),
   KEY `nid_sid` (`nid`,`sid`)
-) ENGINE=InnoDB AUTO_INCREMENT=203 DEFAULT CHARSET=utf8 COMMENT='Holds general information about submissions outside of...';
+) ENGINE=InnoDB AUTO_INCREMENT=207 DEFAULT CHARSET=utf8 COMMENT='Holds general information about submissions outside of...';
 
 CREATE TABLE `webform_submitted_data` (
   `nid` int(10) unsigned NOT NULL default '0' COMMENT 'The node identifier of a webform.',
@@ -1249,3 +1265,6 @@ CREATE TABLE `wysiwyg_user` (
   KEY `format` (`format`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores user preferences for wysiwyg profiles.';
 
+INSERT INTO schema_migrations (version) VALUES ('20120905184235');
+
+INSERT INTO schema_migrations (version) VALUES ('20120905224017');
