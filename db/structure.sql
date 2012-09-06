@@ -1144,7 +1144,6 @@ CREATE TABLE `volunteers` (
   `email` varchar(255) default NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `sid` int(11) default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1266,5 +1265,3 @@ CREATE TABLE `wysiwyg_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores user preferences for wysiwyg profiles.';
 
 INSERT INTO schema_migrations (version) VALUES ('20120905184235');
-
-INSERT INTO schema_migrations (version) VALUES ('20120905224017');
